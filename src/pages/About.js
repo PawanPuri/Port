@@ -98,7 +98,7 @@ const About = () => {
         <motion.div className="about-text" variants={itemVariants}>
           <h3>Who I Am</h3>
           <p>
-            I'm Pawan Goswami, a Experienced Frontend Developer with over 2 years of experience building modern web applications. My journey in software development began with a passion for creating intuitive user interfaces, and has evolved into expertise in full-stack development with a focus on React and modern JavaScript frameworks.
+            I'm Pawan Goswami, a Experienced Mern Stack Developer with over 2 years of experience building modern web applications. My journey in software development began with a passion for creating intuitive user interfaces, and has evolved into expertise in full-stack development with a focus on React and modern JavaScript frameworks.
           </p>
           <p>
             Throughout my career, I've had the opportunity to work with startups, enterprise companies, and everything in between. This diverse experience has given me a unique perspective on software development and the ability to adapt to different environments and requirements.
