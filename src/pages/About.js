@@ -113,15 +113,15 @@ const About = () => {
               <div className="timeline-dot"></div>
               <div className="timeline-content">
                 <h4>Frontend Developer</h4>
-                <h5>Feamsco Pvt. Lmd. (2023 - Present)</h5>
+                <h5>Zehn Solution (2025 Apr - Present)</h5>
                 <p>Frontend developer for enterprise-level applications, focusing on React and TypeScript. Implemented state management solutions, optimized performance, and mentored junior developers.</p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-dot"></div>
               <div className="timeline-content">
-                <h4>Frontend Developer Intern</h4>
-                <h5>Webneuron.io (2022 - 2023)</h5>
+                <h4>Frontend Developer</h4>
+                <h5>Dev Sec Root PVT. LMT. Indore (2024 - 2025)</h5>
                 <p>Developed responsive web applications using React and Redux. Collaborated with designers and backend developers to implement features and improve user experience.</p>
               </div>
             </div>
