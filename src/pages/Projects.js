@@ -35,7 +35,7 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "E Commerce Platform",
+      title: "E Commerce Website",
       description: "A next-generation e-commerce website that connects users with a wide range of products. With advanced search, personalized recommendations, and a secure checkout system, it ensures a smooth and enjoyable shopping journey.",
       image: project3Image,
       technologies: ["React", "WebSockets", "Node.js", "IoT Protocols", "Redux"],
