@@ -113,7 +113,7 @@ const About = () => {
               <div className="timeline-dot"></div>
               <div className="timeline-content">
                 <h4>Frontend Developer</h4>
-                <h5>Zehn Solution Nagpur (2025 apr - Present)</h5>
+                <h5>Zehn Solutions Nagpur (2025 apr - Present)</h5>
                 <p>Frontend developer for enterprise-level applications, focusing on React and TypeScript. Implemented state management solutions, optimized performance, and mentored junior developers.</p>
               </div>
             </div>
