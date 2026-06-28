@@ -12,24 +12,28 @@ const Home = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
 
+  const name = "Hi, I'm Pawan Goswami";
+
   return (
-    <motion.section 
+    <motion.section
       className="home"
       initial="hidden"
       animate="visible"
@@ -37,7 +41,23 @@ const Home = () => {
     >
       <div className="home-content">
         <motion.div className="home-text" variants={itemVariants}>
-          <h1>Hi, I'm Pawan Goswami</h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            {name.split('').map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + index * 0.03 }}
+                style={{ display: char === ' ' ? 'inline' : 'inline-block' }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </motion.h1>
           <TypeAnimation
             sequence={[
               'Frontend Developer',
@@ -54,14 +74,14 @@ const Home = () => {
             repeat={Infinity}
             className="animated-text"
           />
-          <p>
+          <motion.p variants={itemVariants}>
             Building exceptional digital experiences with clean, efficient code.
             Specializing in React and modern JavaScript frameworks to create
             intuitive and responsive web applications.
-          </p>
-          <div className="home-buttons">
+          </motion.p>
+          <motion.div className="home-buttons" variants={itemVariants}>
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: '0 8px 25px rgba(100, 255, 218, 0.3)' }}
               whileTap={{ scale: 0.95 }}
             >
               <Link to="/projects" className="btn primary-btn">
@@ -76,53 +96,60 @@ const Home = () => {
                 Contact Me
               </Link>
             </motion.div>
-          </div>
-          <div className="social-links">
-            <motion.a
-              href="https://github.com/PawanPuri"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ y: -5, color: '#64ffda' }}
-            >
-              <FaGithub />
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/pawan-goswami-23a38222a"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ y: -5, color: '#64ffda' }}
-            >
-              <FaLinkedin />
-            </motion.a>
-            <motion.a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ y: -5, color: '#64ffda' }}
-            >
-              <FaTwitter />
-            </motion.a>
-          </div>
+          </motion.div>
+          <motion.div className="social-links" variants={itemVariants}>
+            {[
+              { href: 'https://github.com/PawanPuri', icon: FaGithub },
+              { href: 'https://linkedin.com/in/pawan-goswami-23a38222a', icon: FaLinkedin },
+              { href: '#', icon: FaTwitter },
+            ].map(({ href, icon: Icon }, index) => (
+              <motion.a
+                key={index}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 + index * 0.1 }}
+                whileHover={{ y: -5, color: '#64ffda', scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Icon />
+              </motion.a>
+            ))}
+          </motion.div>
         </motion.div>
-        <motion.div 
-          className="home-image"
-          variants={itemVariants}
-        >
-          <motion.div 
+        <motion.div className="home-image" variants={itemVariants}>
+          <motion.div
             className="image-container"
-            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              rotate: 0,
+              y: [0, -12, 0],
+            }}
+            transition={{
+              opacity: { duration: 0.6, delay: 0.5 },
+              scale: { duration: 0.6, delay: 0.5 },
+              rotate: { duration: 0.6, delay: 0.5 },
+              y: { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.2 },
+            }}
+            whileHover={{ scale: 1.03, rotate: 2 }}
           >
-            <img src={profileImage} alt="Alex Chen" />
+            <img src={profileImage} alt="Pawan Goswami" />
           </motion.div>
         </motion.div>
       </div>
-      
-      <motion.div 
+
+      <motion.div
         className="scroll-indicator"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{
+          opacity: { delay: 1.5, duration: 0.5 },
+          y: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
+        }}
       >
         <span></span>
         <p>Scroll down</p>

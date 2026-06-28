@@ -125,6 +125,20 @@
   padding: 2rem 0;
 }
 
+.success-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(100, 255, 218, 0.15);
+  color: #64ffda;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  border: 2px solid #64ffda;
+}
+
 .success-message h4 {
   font-size: 1.5rem;
   color: #64ffda;

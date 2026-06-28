@@ -44,6 +44,7 @@
 }
 
 .filter-buttons button {
+  position: relative;
   background: transparent;
   border: 1px solid #64ffda;
   color: #64ffda;
@@ -51,12 +52,30 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.filter-active-bg {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(100, 255, 218, 0.15);
+  border-radius: 3px;
+  z-index: 0;
+}
+
+.filter-label {
+  position: relative;
+  z-index: 1;
 }
 
 .filter-buttons button:hover,
 .filter-buttons button.active {
-  background-color: rgba(100, 255, 218, 0.1);
+  color: #64ffda;
+}
+
+.filter-buttons button.active {
+  border-color: #64ffda;
 }
 
 .projects-grid {
@@ -70,7 +89,12 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.project-card:hover {
+  border-color: rgba(100, 255, 218, 0.15);
 }
 
 .project-card.featured {

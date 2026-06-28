@@ -19,7 +19,7 @@ const Loading = () => {
             strokeWidth="4"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
+            transition={{ duration: 1.5, ease: 'easeInOut' }}
           />
           <motion.circle
             cx="50"
@@ -30,17 +30,33 @@ const Loading = () => {
             strokeWidth="4"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
+            transition={{ duration: 1.5, ease: 'easeInOut', delay: 0.5 }}
           />
         </svg>
       </motion.div>
       <motion.h2
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8 }}
+      >
+        Soft Coder
+      </motion.h2>
+      <motion.p
+        className="loading-tagline"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
-        Soft Coder
-      </motion.h2>
+        Crafting digital experiences...
+      </motion.p>
+      <div className="loading-progress-track">
+        <motion.div
+          className="loading-progress-bar"
+          initial={{ width: '0%' }}
+          animate={{ width: '100%' }}
+          transition={{ duration: 1.8, ease: 'easeInOut', delay: 0.3 }}
+        />
+      </div>
     </div>
   );
 };

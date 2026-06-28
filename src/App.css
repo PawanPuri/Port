@@ -17,6 +17,8 @@ body {
   margin: 0 auto;
   padding: 0 2rem;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 ::-webkit-scrollbar {
@@ -69,5 +71,15 @@ body {
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: #64ffda }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 

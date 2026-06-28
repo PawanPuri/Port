@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaReact, FaNodeJs, FaDatabase, FaCode, FaServer, FaMobileAlt } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaDatabase, FaCode } from 'react-icons/fa';
+import AnimatedSection from '../components/AnimatedSection';
 import './About.css';
 
 const About = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.2,
+    triggerOnce: true,
+  });
+
+  const [skillsRef, skillsInView] = useInView({
+    threshold: 0.1,
     triggerOnce: true,
   });
 
@@ -22,18 +28,19 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -83,16 +90,16 @@ const About = () => {
   ];
 
   return (
-    <motion.section 
+    <motion.section
       className="about"
       ref={ref}
       animate={controls}
       initial="hidden"
       variants={containerVariants}
     >
-      <motion.div className="section-header" variants={itemVariants}>
+      <AnimatedSection className="section-header">
         <h2>About Me</h2>
-      </motion.div>
+      </AnimatedSection>
 
       <motion.div className="about-content" variants={containerVariants}>
         <motion.div className="about-text" variants={itemVariants}>
@@ -106,43 +113,57 @@ const About = () => {
           <p>
             My approach to development centers on writing clean, maintainable code that solves real-world problems. I believe in continuous learning and stay up-to-date with emerging technologies and best practices.
           </p>
-          
+
           <h3>Professional Journey</h3>
           <div className="timeline">
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
+            <motion.div
+              className="timeline-item"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <motion.div
+                className="timeline-dot"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: 'spring', stiffness: 300, delay: 0.3 }}
+              />
               <div className="timeline-content">
                 <h4>Frontend Developer</h4>
-                <h5>Zehn Solutions Nagpur (2025 apr - Present)</h5>
+                <h5>Galaxy  Solutions Nagpur (2024 june - Present)</h5>
                 <p>Frontend developer for enterprise-level applications, focusing on React and TypeScript. Implemented state management solutions, optimized performance, and mentored junior developers.</p>
               </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h4>Frontend Developer</h4>
-                <h5>Dev Sec Root PVT. LMT. Indore (2024 - 2025)</h5>
-                <p>Developed responsive web applications using React and Redux. Collaborated with designers and backend developers to implement features and improve user experience.</p>
-              </div>
-            </div>
-            {/* <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h4>Web Developer</h4>
-                <h5>Creative Web Studio (2017 - 2018)</h5>
-                <p>Built and maintained websites for clients across various industries. Utilized HTML, CSS, JavaScript, and PHP to create interactive and responsive web experiences.</p>
-              </div>
-            </div> */}
+            </motion.div>
           </div>
         </motion.div>
 
-        <motion.div className="skills-container" variants={itemVariants}>
+        <motion.div className="skills-container" variants={itemVariants} ref={skillsRef}>
           <h3>Technical Skills</h3>
           <div className="skills-grid">
             {skillsData.map((skillGroup, index) => (
-              <div key={index} className="skill-category">
+              <motion.div
+                key={index}
+                className="skill-category"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15, duration: 0.5 }}
+                whileHover={{
+                  y: -8,
+                  boxShadow: '0 20px 40px -15px rgba(100, 255, 218, 0.12)',
+                  transition: { duration: 0.3 },
+                }}
+              >
                 <div className="skill-header">
-                  <div className="skill-icon">{skillGroup.icon}</div>
+                  <motion.div
+                    className="skill-icon"
+                    whileHover={{ rotate: 360, scale: 1.2 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {skillGroup.icon}
+                  </motion.div>
                   <h4>{skillGroup.category}</h4>
                 </div>
                 <div className="skill-list">
@@ -153,17 +174,21 @@ const About = () => {
                         <span>{skill.level}%</span>
                       </div>
                       <div className="skill-bar">
-                        <motion.div 
+                        <motion.div
                           className="skill-progress"
                           initial={{ width: 0 }}
-                          animate={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1, delay: 0.3 + (skillIndex * 0.1) }}
-                        ></motion.div>
+                          animate={skillsInView ? { width: `${skill.level}%` } : { width: 0 }}
+                          transition={{
+                            duration: 1.2,
+                            delay: 0.2 + skillIndex * 0.1,
+                            ease: [0.25, 0.46, 0.45, 0.94],
+                          }}
+                        />
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -173,4 +198,3 @@ const About = () => {
 };
 
 export default About;
-

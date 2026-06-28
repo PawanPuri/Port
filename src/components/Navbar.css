@@ -47,6 +47,17 @@
   
   .nav-menu li {
     margin-left: 2rem;
+    position: relative;
+  }
+
+  .nav-underline {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #64ffda;
+    border-radius: 2px;
   }
   
   .nav-menu li a {

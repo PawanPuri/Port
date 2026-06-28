@@ -18,3 +18,24 @@
   font-weight: 700;
   margin-top: 1rem;
 }
+
+.loading-tagline {
+  color: #8892b0;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.loading-progress-track {
+  width: 200px;
+  height: 3px;
+  background-color: rgba(100, 255, 218, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.loading-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #64ffda, rgba(100, 255, 218, 0.5));
+  border-radius: 3px;
+}
